@@ -10,11 +10,42 @@ Monitor Nodes, Pods, Deployments, Namespaces, and Pod Resource Usage (CPU/Memory
 
 ## 📚 Project Structure
 
-k8s-dashboard/
-├── backend/        # Node.js API server (Kubernetes client)
-├── frontend/       # React frontend (built and served via Nginx)
-├── docker-compose.yml
-├── README.md
+k8scape
+├── backend/                  # Node.js API server for Kubernetes
+│   ├── Dockerfile             # Backend Docker build instructions
+│   ├── index.js               # Main Express app
+│   ├── package.json           # Backend dependencies and scripts
+│
+├── frontend/                  # React frontend (built with TailwindCSS)
+│   ├── Dockerfile             # Frontend multi-stage build (React + Nginx)
+│   ├── nginx.conf             # Nginx config (proxy API requests)
+│   ├── package.json           # Frontend dependencies
+│   ├── tailwind.config.js     # TailwindCSS configuration
+│   ├── postcss.config.js      # PostCSS configuration
+│   ├── public/
+│   │   └── index.html         # Base HTML file
+│   └── src/                   # Source code for React app
+│       ├── api/
+│       │   └── k8s.ts         # Axios API calls wrapper
+│       ├── components/        # Reusable UI components
+│       │   ├── NodeList.tsx
+│       │   ├── PodList.tsx
+│       │   ├── DeploymentList.tsx
+│       │   ├── NamespaceFilter.tsx
+│       │   ├── PodDetails.tsx
+│       │   └── PodMetrics.tsx
+│       ├── App.tsx            # Main React app
+│       ├── index.tsx          # React DOM rendering entry
+│       └── index.css          # TailwindCSS global styles
+│
+├── deploy/         # Files to run frontend + backend together
+│   └── docker-compose.yml
+│
+├── README.md                   # Project overview and instructions
+│
+└── .github/
+└── workflows/
+└── ci.yml              # GitHub Actions CI workflow (optional)
 
 ⸻
 
@@ -32,7 +63,8 @@ k8s-dashboard/
 ### 2. Build and Run (Docker Compose)
 
 ```bash
-docker-compose up --build```
+docker-compose up --build
+```
 
 This command:
 	•	Builds the backend Node.js API
@@ -78,7 +110,8 @@ services:
     ports:
       - "3000:80"
     depends_on:
-      - backend```
+      - backend
+```
 ⸻
 
 🐳 Docker Overview
@@ -100,15 +133,19 @@ Run services separately if needed:
 
 Backend
 
-```bash cd backend
+```bash 
+cd backend
 npm install
-npm run start```
+npm run start
+```
 
 Frontend
 
-```bash cd frontend
+```bash 
+cd frontend
 npm install
-npm start```
+npm start
+```
 
 ⸻
 
@@ -161,16 +198,16 @@ Free to use, modify, and deploy.
 
 📈 Example Architecture Diagram
 
-+———–+         +———–+
-|           |  API    |           |
-| Frontend  +––––>+  Backend  |
-| (React +  |         | (Node.js  |
-|  Nginx)   |         |  Express) |
-+———–+         +———–+
-|                     |
-| Static Assets        | Kubernetes API
-|                      |
-+———–<–––––+
++-----------+          +-----------+
+|           |  API     |           |
+| Frontend  +--------->+  Backend  |
+| (React +  |          | (Node.js  |
+|  Nginx)   |          |  Express) |
++-----------+          +-----------+
+       |                     |
+       | Static Files         | Kubernetes API
+       |                      |
+       +-----------<----------+
 
 ⸻
 
