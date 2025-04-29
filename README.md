@@ -11,43 +11,36 @@ Monitor Nodes, Pods, Deployments, Namespaces, and Pod Resource Usage (CPU/Memory
 ## 📚 Project Structure
 
 k8scape
-├── backend/                  # Node.js API server for Kubernetes
-│   ├── Dockerfile             # Backend Docker build instructions
-│   ├── index.js               # Main Express app
-│   ├── package.json           # Backend dependencies and scripts
-│
-├── frontend/                  # React frontend (built with TailwindCSS)
-│   ├── Dockerfile             # Frontend multi-stage build (React + Nginx)
-│   ├── nginx.conf             # Nginx config (proxy API requests)
-│   ├── package.json           # Frontend dependencies
-│   ├── tailwind.config.js     # TailwindCSS configuration
-│   ├── postcss.config.js      # PostCSS configuration
-│   ├── public/
-│   │   └── index.html         # Base HTML file
-│   └── src/                   # Source code for React app
-│       ├── api/
-│       │   └── k8s.ts         # Axios API calls wrapper
-│       ├── components/        # Reusable UI components
-│       │   ├── NodeList.tsx
-│       │   ├── PodList.tsx
-│       │   ├── DeploymentList.tsx
-│       │   ├── NamespaceFilter.tsx
-│       │   ├── PodDetails.tsx
-│       │   └── PodMetrics.tsx
-│       ├── App.tsx            # Main React app
-│       ├── index.tsx          # React DOM rendering entry
-│       └── index.css          # TailwindCSS global styles
-│
-├── deploy/         # Files to run frontend + backend together
-│   └── docker-compose.yml
-│
-├── README.md                   # Project overview and instructions
-│
-└── .github/
-└── workflows/
-└── ci.yml              # GitHub Actions CI workflow (optional)
+├── backend
+│   ├── Dockerfile
+│   ├── index.js
+│   └── package.json
+├── deploy
+│   └── docker-compose.yml
+├── frontend
+│   ├── Dockerfile
+│   ├── nginx.conf
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── public
+│   │   └── index.html
+│   ├── src
+│   │   ├── api
+│   │   │   └── k8s.ts
+│   │   ├── App.tsx
+│   │   ├── components
+│   │   │   ├── DeploymentList.tsx
+│   │   │   ├── NamespaceFilter.tsx
+│   │   │   ├── NodeList.tsx
+│   │   │   ├── PodDetails.tsx
+│   │   │   ├── PodList.tsx
+│   │   │   └── PodMetrics.tsx
+│   │   ├── index.css
+│   │   └── index.tsx
+│   ├── tailwind.config.js
+│   └── tsconfig.json
+└── README.md
 
-⸻
 
 ---
 
