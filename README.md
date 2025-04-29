@@ -18,22 +18,27 @@ k8s-dashboard/
 
 ⸻
 
+---
+
 ## 🚀 Quick Start
 
-1. Prerequisites
-	•	Docker installed
-	•	Kubernetes cluster access (kubectl configured)
+### 1. Prerequisites
 
-⸻
+- [Docker](https://docs.docker.com/get-docker/) installed
+- Kubernetes cluster access ([kubectl](https://kubernetes.io/docs/tasks/tools/) configured)
 
-2. Build and Run (Docker Compose)
+---
 
-docker-compose up –build
+### 2. Build and Run (Docker Compose)
+
+```bash
+docker-compose up --build```
 
 This command:
 	•	Builds the backend Node.js API
 	•	Builds and serves the frontend React app via Nginx
-	•	Creates a private network between services
+	•	Creates a private Docker network between services
+
 
 ⸻
 
@@ -57,23 +62,23 @@ This command:
 
 📂 Docker Compose Setup
 
-version: ‘3.8’
+```yaml
+version: '3.8'
 
 services:
-backend:
-build: ./backend
-ports:
-- “4000:4000”
-environment:
-- NODE_ENV=production
+  backend:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
 
-frontend:
-build: ./frontend
-ports:
-- “3000:80”
-depends_on:
-- backend
-
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend```
 ⸻
 
 🐳 Docker Overview
@@ -95,15 +100,15 @@ Run services separately if needed:
 
 Backend
 
-cd backend
+```bash cd backend
 npm install
-npm run start
+npm run start```
 
 Frontend
 
-cd frontend
+```bash cd frontend
 npm install
-npm start
+npm start```
 
 ⸻
 
