@@ -16,7 +16,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen bg-gray-100 p-8">
-        <h1 className="text-4xl font-bold mb-8">Kubernetes Dashboard</h1>
+        <h1 className="text-4xl font-bold mb-8">k8scape</h1>
         <NamespaceFilter onSelect={setNamespace} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
