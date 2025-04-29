@@ -1,6 +1,6 @@
 # k8scape
 
-Kubernetes Dashboard (k8s-dashboard)
+## Kubernetes Dashboard (k8s-dashboard)
 
 A lightweight, containerized Kubernetes dashboard built with React, Node.js, Docker, and TailwindCSS.
 
@@ -8,7 +8,7 @@ Monitor Nodes, Pods, Deployments, Namespaces, and Pod Resource Usage (CPU/Memory
 
 ⸻
 
-📚 Project Structure
+## 📚 Project Structure
 
 k8s-dashboard/
 ├── backend/        # Node.js API server (Kubernetes client)
@@ -18,7 +18,7 @@ k8s-dashboard/
 
 ⸻
 
-🚀 Quick Start
+## 🚀 Quick Start
 
 1. Prerequisites
 	•	Docker installed
